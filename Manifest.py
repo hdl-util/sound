@@ -1,3 +1,3 @@
 files = [
-    "wave.sv"
+    "./src/wave.sv"
 ]
