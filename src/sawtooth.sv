@@ -9,7 +9,9 @@ module sawtooth
     output logic signed [BIT_WIDTH-1:0] level = BIT_WIDTH'(0)
 );
 
-localparam INCREMENT = BIT_WIDTH'($signed(((WAVE_RATE * 2**BIT_WIDTH) / SAMPLE_RATE)));
+localparam NUM_PCM_STEPS = (BIT_WIDTH + 1)'(2)**(BIT_WIDTH + 1)'(BIT_WIDTH) - 1;
+localparam FREQUENCY_RATIO = real'(WAVE_RATE) / real'(SAMPLE_RATE);
+localparam INCREMENT = BIT_WIDTH'(NUM_PCM_STEPS * FREQUENCY_RATIO);
 
 always @(posedge clk_audio)
     level <= level + INCREMENT;

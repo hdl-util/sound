@@ -1,3 +1,3 @@
-files = [
-    "./src/wave.sv"
-]
+modules = {
+    "local": "./src/"
+}
